@@ -1,7 +1,27 @@
+import { IsNotEmpty } from 'class-validator';
+
 export class CreatePatientDto {
-    name: string;
-    age: number;
-    breed: string;
+  @IsNotEmpty()
+  idNumber: string;
+
+  @IsNotEmpty()
+  dateOfBirth: Date;
+
+  @IsNotEmpty()
+  gender: string;
+
+  @IsNotEmpty()
+  race: string;
+
+  @IsNotEmpty()
+  ethnicity: string;
+
+  @IsNotEmpty()
+  familyHistory: string;
+
+  @IsNotEmpty()
+  collectionSite: string;
+
+  @IsNotEmpty()
+  dateOfAbstraction: Date;
 }
-
-

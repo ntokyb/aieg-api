@@ -1,16 +1,24 @@
 import { Injectable } from '@nestjs/common';
-import { Patient } from './patient-interface/patient-interface'
+import { InjectRepository } from '@nestjs/typeorm';
+import { Repository } from 'typeorm';
+import { Patient } from '../patients/patient.entity';
 
 @Injectable()
 export class PatientsService {
-    private readonly patients: Patient[] = [];
+  constructor(
+    @InjectRepository(Patient)
+    private patientRepository: Repository<Patient>,
+  ) {}
 
-    create(patient: Patient) {
-        this.patients.push(patient)
-    }
+  async getAllPatients(): Promise<Patient[]> {
+    return await this.patientRepository.find();
+  }
 
-    findAll(): Patient[] {
-        return this.patients;
-    }
+  async findPatient(id: number): Promise<Patient> {
+    return this.patientRepository.findOne(id);
+  }
 
+  async removePatient(id: number): Promise<void> {
+    await this.patientRepository.findOne(id);
+  }
 }
