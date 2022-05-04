@@ -48,6 +48,7 @@ import { Survival } from './survival/survival.entity';
 import { Treatments } from './treatments/treatments.entity';
 import { Users } from './users/user.entity';
 import { Vitals } from './vitals/vitals.entity';
+import { UsersController } from './users/users.controller';
 
 @Module({
   imports: [
@@ -96,6 +97,7 @@ import { Vitals } from './vitals/vitals.entity';
     DiagnosisprocedureModule,
     ReportsModule,
   ],
+  controllers: [UsersController],
   providers: [
     UsersService,
     PatientsService,

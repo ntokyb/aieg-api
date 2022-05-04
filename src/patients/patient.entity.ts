@@ -1,4 +1,11 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  OneToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Users } from '../users/user.entity';
 
 @Entity()
 export class Patient {
@@ -48,4 +55,8 @@ export class Patient {
 
   @Column('datetime')
   DateOfAbstraction: Date;
+
+  @OneToOne(() => Users)
+  @JoinColumn()
+  User: Users;
 }
